@@ -1,62 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will You Be My Valentine My Beautiful Romay?</title>
-  <style>
-    body {
-      background: #ffd6e7;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      width: 300px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #yes {
-      background: #ff4d88;
-      color: white;
-    }
-    #no {
-      background: #ddd;
-      position: absolute;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Rosemary 💕</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ffe6f0);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid #ff69b4;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff4d88;
+  color: white;
+}
+
+#no {
+  background: #eee;
+  position: absolute;
+}
+
+.hearts {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: rise 4s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h2>💕</h2>
-    <p><strong>My love, will you be my Valentine?</strong></p>
-    <button id="yes" onclick="yesClicked()">Yes</button>
-    <button id="no" onmouseover="moveNo()">No</button>
-  </div>
+<div class="card" id="card">
+  <img src="rosemary.jpg" alt="Rosemary">
+  <h2>Rosemary 💖</h2>
+  <p>Will you be my Valentine?</p>
+  <button id="yes" onclick="yesClicked()">Yes 💕</button>
+  <button id="no" onmouseover="moveNo()">No 🙈</button>
+</div>
 
-  <script>
-    function moveNo() {
-      const no = document.getElementById("no");
-      no.style.left = Math.random() * 80 + "%";
-      no.style.top = Math.random() * 80 + "%";
-    }
+<script>
+function moveNo() {
+  const no = document.getElementById("no");
+  no.style.left = Math.random() * 90 + "%";
+  no.style.top = Math.random() * 90 + "%";
+}
 
-    function yesClicked() {
-      document.body.innerHTML = "<h1>💖 YAY! I love you 💖</h1>";
-    }
-  </script>
+function yesClicked() {
+  document.body.innerHTML = `
+    <div class="card">
+      <h1>💘 Yayyyyy! 💘</h1>
+      <p>
+        Rosemary, you just made my heart the happiest place on earth.<br><br>
+        Thank you for being beautiful, kind, and special.<br>
+        I can’t wait to make unforgettable memories with you ❤️
+      </p>
+      <h2>Happy Valentine’s Day 💕</h2>
+    </div>
+  `;
+  createHearts();
+}
+
+function createHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "hearts";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 300);
+}
+</script>
 
 </body>
 </html>
